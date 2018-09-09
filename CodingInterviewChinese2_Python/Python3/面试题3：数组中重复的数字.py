@@ -4,8 +4,8 @@
 
 '''
  n 个元素，都在 0~n-1 之间，找出其中一个重复数字
+ 
 ''' 
-
 
 # 哈希表方式，时间 O(n) 空间 O(n)，无需修改原数组
 def by_hash(numbers):
@@ -63,12 +63,13 @@ def by_swap(numbers):
     return -1
                     
 
-def get_dumplicate(numbers):
+def get_duplication(numbers):
     return by_swap(numbers)
 
     
 '''
 测试用例
+
 '''  
 
 # 长度为 n 的数组里包含一个或多个重复的数字
@@ -81,4 +82,8 @@ test_case2 = [2, 3, 1, 0, 5, 4]
 test_case3 = None
 test_case4 = [2, 3, 1, 0, 6, 2]
 
-print(get_dumplicate(test_case4))
+print("test_case1:", get_duplication(test_case1))
+print("test_case2:", get_duplication(test_case2))
+print("test_case3:", get_duplication(test_case3))
+print("test_case4:", get_duplication(test_case4))
+
