@@ -5,19 +5,27 @@
 '''
 n+1 个元素，都在 1~n 之内，找出其中一个重复数字
 不能修改原数组
+时间 O(nlogn) 空间 O(1)
 
 '''
 
 def get_duplication(numbers):
+    # numbers 不为 list
     if not isinstance(numbers, list):
         return -1
+    len_numbers = len(numbers)
+    for i in range(len_numbers):
+        # numbers[i] 不为 int
+        if not isinstance(numbers[i], int):
+            return -1
+        # numbers[i] 范围不合法
+        if numbers[i] < 1 or numbers[i] > len_numbers-1:
+            return -1
     start = 1
-    end = len(numbers) - 1
+    end = len_numbers - 1
     while start <= end:
         middle = (start + end) // 2
         n = get_count(numbers, start, middle)
-        if n == -1:
-            return -1
         if start == end:
             if n > 1:
                 return start
@@ -27,21 +35,14 @@ def get_duplication(numbers):
             end = middle
         else:
             start = middle + 1
-            
     return -1
     
     
 def get_count(numbers, start, end):
     n = 0
-    len_numbers = len(numbers)
-    for i in range(len_numbers):
-        if not isinstance(numbers[i], int):
-            return -1
-        if numbers[i] < 1 or numbers[i] > len_numbers-1:
-            return -1
+    for i in range(len(numbers)):
         if numbers[i] >= start and numbers[i] <= end:
             n += 1
-            
     return n
         
     
