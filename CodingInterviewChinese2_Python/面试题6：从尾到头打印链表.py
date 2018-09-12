@@ -39,11 +39,12 @@ def remove_node(list, value):
     head = list
     while list.next != None and list.next.value != value:
         list = list.next
-    if list.next.value == value:
-        list.next =  list.next.next
-        return head
     if list.next == None:
-        raise ValueError("can't find the value:", value)
+        raise ValueError("can't find the value:" + str(value))
+    if list.next.value == value:
+        # 包含了 list.next.next 为 None 的情况
+        list.next = list.next.next
+        return head
     
     
 # 顺序打印链表元素    
@@ -93,3 +94,4 @@ test_list = add_to_tail(test_list, 2)
 test_list = add_to_tail(test_list, 5)
 print_list(test_list)
 print_list_reversingly(test_list)
+test_list = remove_node(test_list, 11)
