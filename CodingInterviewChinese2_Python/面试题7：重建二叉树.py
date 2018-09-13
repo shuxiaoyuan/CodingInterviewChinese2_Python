@@ -16,8 +16,9 @@ class BinaryTreeNode:
         
 def construct(preorder, inorder):
     if not (isinstance(preorder, list) 
-            and isinstance(inorder, list)):
-        raise TypeError("参数类型错误！");
+            and isinstance(inorder, list)
+            and len(preorder) != len(inorder)):
+        raise ValueError("输入的先序/中序遍历序列不正确！")
     
     return construct_core(preorder, 0, len(preorder)-1, 
         inorder, 0, len(inorder)-1)
@@ -38,7 +39,8 @@ def construct_core(preorder, start_preorder, end_preorder,
     root_inorder = start_inorder
     while root_inorder <= end_inorder and inorder[root_inorder] != root_value:
         root_inorder += 1
-    if root_inorder == end_inorder and inorder[root_inorder] != root_value:
+    # 感觉原书这里的判定有问题
+    if root_inorder > end_inorder:
         raise ValueError("输入的先序/中序遍历序列不正确！")
     
     left_length = root_inorder - start_inorder
