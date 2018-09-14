@@ -36,9 +36,7 @@ def get_next(node):
             return next
             
         # 当前节点为父亲结点的右子树
-        current = node
-        while next != None and current == next.right:
-            current = next
+        while next.parent != None and next == next.parent.right:
             next = next.parent
         
         # 包括 next 为 None 的情况（当 node 是中序遍历最后一个结点时）
