@@ -39,8 +39,8 @@ def get_next(node):
         while next.parent != None and next == next.parent.right:
             next = next.parent
         
-        # 包括 next 为 None 的情况（当 node 是中序遍历最后一个结点时）
-        return next
+        # 包括 next.parent 为 None 的情况（当 node 是中序遍历最后一个结点时）
+        return next.parent
     
     # node 是没有右子树的根结点
     return None
