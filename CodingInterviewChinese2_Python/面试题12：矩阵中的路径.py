@@ -9,11 +9,10 @@ def has_path(matrix, rows, cols, str):
         return False
     
     visited = [False for i in range(rows * cols)]
-    len_path = 0
     for i in range(rows):
         for j in range(cols):
             if has_path_core(matrix, rows, cols, i, j,
-                                str, len_path, visited):
+                                str, 0, visited):
                 return True
     return False
     
